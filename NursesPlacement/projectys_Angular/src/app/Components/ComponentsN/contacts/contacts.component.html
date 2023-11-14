@@ -1,0 +1,56 @@
+<!-- <table  class="🏓" valign="center" width="100%" >
+    <thead>
+    <tr>
+        <th>i</th>
+        <th>שם פרטי</th>
+        <th>שם משפחה</th>
+        <th>פלאפון</th>
+        <th>אמייל</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ol #myHtml>
+        <li  *ngFor="let p of arrNurses;let i=index" value="index+1">
+            {{p.N_firstName}} {{p.N_lastName}} {{p.N_tel}} {{p.N_email}}
+        </li>
+    </ol>
+    </tbody>
+</table> -->
+
+<!-- <table>
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Index</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let n of arrNurses;let i=index" value="index+1">
+            <td>{{n.N_firstName}}</td>
+            <td>{{n.N_lastName}}</td>
+        </tr>
+    </tbody>
+</table> -->
+
+<table #myHtml class="tableC" cellspacing="0" valign="center" width="100%">
+	<thead>
+		<tr>
+			<th data-label="Index"></th>
+			<th data-label="FName">שם פרטי</th>
+			<th data-label="LName">שם משפחה</th>
+            <th data-label="Phone">פלאפון</th>
+			<th data-label="E-mail">אמייל</th>
+            <th data-label="Status">תפקיד</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let n of arrNurses ;let i=index" value="index+1">
+			<td  data-label="Index">{{i+1}}</td>
+			<td data-label="FName">{{n.N_firstName}}</td>
+			<td data-label="LName">{{n.N_lastName}}</td>
+			<td data-label="Phone">{{n.N_tel}}</td>
+            <td data-label="E-mail">{{n.N_email}}</td>
+            <td data-label="Status">{{n.N_status}}</td>
+		</tr>
+    </tbody>
+</table>    

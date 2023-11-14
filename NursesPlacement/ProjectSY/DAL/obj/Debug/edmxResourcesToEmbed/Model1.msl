@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Nurses_PlacementModelStoreContainer" CdmEntityContainer="Nurses_PlacementEntities">
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="Nurses_PlacementModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="D_id" ColumnName="D_id" />
+          <ScalarProperty Name="D_name" ColumnName="D_name" />
+          <ScalarProperty Name="D_countNursesInShift" ColumnName="D_countNursesInShift" />
+          <ScalarProperty Name="D_countNursesInDep" ColumnName="D_countNursesInDep" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nurses">
+      <EntityTypeMapping TypeName="Nurses_PlacementModel.Nurse">
+        <MappingFragment StoreEntitySet="Nurse">
+          <ScalarProperty Name="N_id" ColumnName="N_id" />
+          <ScalarProperty Name="N_password" ColumnName="N_password" />
+          <ScalarProperty Name="N_firstName" ColumnName="N_firstName" />
+          <ScalarProperty Name="N_lastName" ColumnName="N_lastName" />
+          <ScalarProperty Name="N_tel" ColumnName="N_tel" />
+          <ScalarProperty Name="N_email" ColumnName="N_email" />
+          <ScalarProperty Name="N_status" ColumnName="N_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NursesInDepartments">
+      <EntityTypeMapping TypeName="Nurses_PlacementModel.NursesInDepartment">
+        <MappingFragment StoreEntitySet="NursesInDepartment">
+          <ScalarProperty Name="ND_id_NinD" ColumnName="ND_id_NinD" />
+          <ScalarProperty Name="ND_D_id" ColumnName="ND_D_id" />
+          <ScalarProperty Name="ND_N_id" ColumnName="ND_N_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Placements">
+      <EntityTypeMapping TypeName="Nurses_PlacementModel.Placement">
+        <MappingFragment StoreEntitySet="Placement">
+          <ScalarProperty Name="P_id" ColumnName="P_id" />
+          <ScalarProperty Name="P_idNInD" ColumnName="P_idNInD" />
+          <ScalarProperty Name="P_day" ColumnName="P_day" />
+          <ScalarProperty Name="P_shift" ColumnName="P_shift" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

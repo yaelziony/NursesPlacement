@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Nurses_PlacementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="D_id" />
+          </Key>
+          <Property Name="D_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="D_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="D_countNursesInShift" Type="int" />
+          <Property Name="D_countNursesInDep" Type="int" />
+        </EntityType>
+        <EntityType Name="Nurse">
+          <Key>
+            <PropertyRef Name="N_id" />
+          </Key>
+          <Property Name="N_id" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="N_password" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="N_firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="N_lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="N_tel" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="N_email" Type="varchar" MaxLength="40" />
+          <Property Name="N_status" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="NursesInDepartment">
+          <Key>
+            <PropertyRef Name="ND_id_NinD" />
+          </Key>
+          <Property Name="ND_id_NinD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ND_D_id" Type="int" />
+          <Property Name="ND_N_id" Type="varchar" MaxLength="9" />
+        </EntityType>
+        <EntityType Name="Placement">
+          <Key>
+            <PropertyRef Name="P_id" />
+          </Key>
+          <Property Name="P_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="P_idNInD" Type="int" />
+          <Property Name="P_day" Type="int" />
+          <Property Name="P_shift" Type="varchar" MaxLength="9" />
+        </EntityType>
+        <Association Name="FK__NursesInD__ND_D___17F790F9">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="NursesInDepartment" Type="Self.NursesInDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="NursesInDepartment">
+              <PropertyRef Name="ND_D_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NursesInD__ND_N___18EBB532">
+          <End Role="Nurse" Type="Self.Nurse" Multiplicity="0..1" />
+          <End Role="NursesInDepartment" Type="Self.NursesInDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nurse">
+              <PropertyRef Name="N_id" />
+            </Principal>
+            <Dependent Role="NursesInDepartment">
+              <PropertyRef Name="ND_N_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Placement__P_idN__1BC821DD">
+          <End Role="NursesInDepartment" Type="Self.NursesInDepartment" Multiplicity="0..1" />
+          <End Role="Placement" Type="Self.Placement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NursesInDepartment">
+              <PropertyRef Name="ND_id_NinD" />
+            </Principal>
+            <Dependent Role="Placement">
+              <PropertyRef Name="P_idNInD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Nurses_PlacementModelStoreContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nurse" EntityType="Self.Nurse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NursesInDepartment" EntityType="Self.NursesInDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Placement" EntityType="Self.Placement" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__NursesInD__ND_D___17F790F9" Association="Self.FK__NursesInD__ND_D___17F790F9">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="NursesInDepartment" EntitySet="NursesInDepartment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NursesInD__ND_N___18EBB532" Association="Self.FK__NursesInD__ND_N___18EBB532">
+            <End Role="Nurse" EntitySet="Nurse" />
+            <End Role="NursesInDepartment" EntitySet="NursesInDepartment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Placement__P_idN__1BC821DD" Association="Self.FK__Placement__P_idN__1BC821DD">
+            <End Role="NursesInDepartment" EntitySet="NursesInDepartment" />
+            <End Role="Placement" EntitySet="Placement" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Nurses_PlacementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="D_id" />
+          </Key>
+          <Property Name="D_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="D_countNursesInShift" Type="Int32" />
+          <Property Name="D_countNursesInDep" Type="Int32" />
+          <NavigationProperty Name="NursesInDepartments" Relationship="Self.FK__NursesInD__ND_D___17F790F9" FromRole="Department" ToRole="NursesInDepartment" />
+        </EntityType>
+        <EntityType Name="Nurse">
+          <Key>
+            <PropertyRef Name="N_id" />
+          </Key>
+          <Property Name="N_id" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="N_password" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="N_firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="N_lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="N_tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="N_email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="N_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NursesInDepartments" Relationship="Self.FK__NursesInD__ND_N___18EBB532" FromRole="Nurse" ToRole="NursesInDepartment" />
+        </EntityType>
+        <EntityType Name="NursesInDepartment">
+          <Key>
+            <PropertyRef Name="ND_id_NinD" />
+          </Key>
+          <Property Name="ND_id_NinD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ND_D_id" Type="Int32" />
+          <Property Name="ND_N_id" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__NursesInD__ND_D___17F790F9" FromRole="NursesInDepartment" ToRole="Department" />
+          <NavigationProperty Name="Nurse" Relationship="Self.FK__NursesInD__ND_N___18EBB532" FromRole="NursesInDepartment" ToRole="Nurse" />
+          <NavigationProperty Name="Placements" Relationship="Self.FK__Placement__P_idN__1BC821DD" FromRole="NursesInDepartment" ToRole="Placement" />
+        </EntityType>
+        <EntityType Name="Placement">
+          <Key>
+            <PropertyRef Name="P_id" />
+          </Key>
+          <Property Name="P_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="P_idNInD" Type="Int32" />
+          <Property Name="P_day" Type="Int32" />
+          <Property Name="P_shift" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NursesInDepartment" Relationship="Self.FK__Placement__P_idN__1BC821DD" FromRole="Placement" ToRole="NursesInDepartment" />
+        </EntityType>
+        <Association Name="FK__NursesInD__ND_D___17F790F9">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="NursesInDepartment" Type="Self.NursesInDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="D_id" />
+            </Principal>
+            <Dependent Role="NursesInDepartment">
+              <PropertyRef Name="ND_D_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NursesInD__ND_N___18EBB532">
+          <End Role="Nurse" Type="Self.Nurse" Multiplicity="0..1" />
+          <End Role="NursesInDepartment" Type="Self.NursesInDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nurse">
+              <PropertyRef Name="N_id" />
+            </Principal>
+            <Dependent Role="NursesInDepartment">
+              <PropertyRef Name="ND_N_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Placement__P_idN__1BC821DD">
+          <End Role="NursesInDepartment" Type="Self.NursesInDepartment" Multiplicity="0..1" />
+          <End Role="Placement" Type="Self.Placement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NursesInDepartment">
+              <PropertyRef Name="ND_id_NinD" />
+            </Principal>
+            <Dependent Role="Placement">
+              <PropertyRef Name="P_idNInD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Nurses_PlacementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Nurses" EntityType="Self.Nurse" />
+          <EntitySet Name="NursesInDepartments" EntityType="Self.NursesInDepartment" />
+          <EntitySet Name="Placements" EntityType="Self.Placement" />
+          <AssociationSet Name="FK__NursesInD__ND_D___17F790F9" Association="Self.FK__NursesInD__ND_D___17F790F9">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="NursesInDepartment" EntitySet="NursesInDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NursesInD__ND_N___18EBB532" Association="Self.FK__NursesInD__ND_N___18EBB532">
+            <End Role="Nurse" EntitySet="Nurses" />
+            <End Role="NursesInDepartment" EntitySet="NursesInDepartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Placement__P_idN__1BC821DD" Association="Self.FK__Placement__P_idN__1BC821DD">
+            <End Role="NursesInDepartment" EntitySet="NursesInDepartments" />
+            <End Role="Placement" EntitySet="Placements" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Nurses_PlacementModelStoreContainer" CdmEntityContainer="Nurses_PlacementEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="Nurses_PlacementModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="D_id" ColumnName="D_id" />
+                <ScalarProperty Name="D_name" ColumnName="D_name" />
+                <ScalarProperty Name="D_countNursesInShift" ColumnName="D_countNursesInShift" />
+                <ScalarProperty Name="D_countNursesInDep" ColumnName="D_countNursesInDep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nurses">
+            <EntityTypeMapping TypeName="Nurses_PlacementModel.Nurse">
+              <MappingFragment StoreEntitySet="Nurse">
+                <ScalarProperty Name="N_id" ColumnName="N_id" />
+                <ScalarProperty Name="N_password" ColumnName="N_password" />
+                <ScalarProperty Name="N_firstName" ColumnName="N_firstName" />
+                <ScalarProperty Name="N_lastName" ColumnName="N_lastName" />
+                <ScalarProperty Name="N_tel" ColumnName="N_tel" />
+                <ScalarProperty Name="N_email" ColumnName="N_email" />
+                <ScalarProperty Name="N_status" ColumnName="N_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NursesInDepartments">
+            <EntityTypeMapping TypeName="Nurses_PlacementModel.NursesInDepartment">
+              <MappingFragment StoreEntitySet="NursesInDepartment">
+                <ScalarProperty Name="ND_id_NinD" ColumnName="ND_id_NinD" />
+                <ScalarProperty Name="ND_D_id" ColumnName="ND_D_id" />
+                <ScalarProperty Name="ND_N_id" ColumnName="ND_N_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Placements">
+            <EntityTypeMapping TypeName="Nurses_PlacementModel.Placement">
+              <MappingFragment StoreEntitySet="Placement">
+                <ScalarProperty Name="P_id" ColumnName="P_id" />
+                <ScalarProperty Name="P_idNInD" ColumnName="P_idNInD" />
+                <ScalarProperty Name="P_day" ColumnName="P_day" />
+                <ScalarProperty Name="P_shift" ColumnName="P_shift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,76 @@
+<table>
+    <tr>
+        <td>שם פרטי</td>
+        <td #myHtml1>{{first_name}}</td>
+    </tr>
+    <tr>
+        <td>שם משפחה</td>
+        <td #myHtml2>{{last_name}}</td>
+    </tr>
+    <tr>
+        <td>תעודת זהות </td>
+        <td #myHtml3>{{id}}</td>
+    </tr>
+    <tr>
+        <td>טלפון</td>
+        <td #myHtml4>{{tel}}<p>:שינוי</p><input [(ngModel)]="tel" placeholder="update phon"></td>
+    </tr>
+    <tr>
+        <td>מייל</td>
+        <td #myHtml5>{{email}}<p>:שינוי</p><input [(ngModel)]="email" placeholder="update email"></td>
+    </tr>
+    <tr>
+        <td>סיסמא</td>
+        <td #myHtml7>{{password}}<p>:שינוי</p><input [(ngModel)]="password" placeholder="update password"></td>
+    </tr>
+    <tr>
+        <td>תפקיד</td>
+        <td #myHtml6>{{role}}</td>
+    </tr>
+    <button (click)="change()">אישור </button>
+</table>
+
+ <!-- <div dir="rtl">
+    
+    <table >
+        <th colspan="3">פרטים:</th>
+        <tr>
+            <td>שם פרטי</td>
+            <td  #myHtml1>{{first_name}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>שם משפחה</td>
+            <td  #myHtml2>{{last_name}}</td>
+            <td></td>
+        </tr>
+        <tr >
+            <td >טלפון</td>
+            <td  #myHtml3>{{tel}}</td>
+            <td><p>:שינוי</p><input [(ngModel)]="tel" placeholder="new phon"></td>
+        </tr>
+        <tr >
+            <td >מייל</td>
+            <td  #myHtml4>{{email}}</td>
+            <td> <p>:שינוי</p><input [(ngModel)]="email" placeholder="new email"></td>
+        </tr>
+        <tr >
+            <td  >סיסמא</td>
+            <td  #myHtml7>{{password}}</td>
+            <td><p>:שינוי</p><input [(ngModel)]="password" placeholder="new password"></td>
+        </tr>
+        <tr>
+            <td>תעודת זהות</td>
+            <td  #myHtml5>{{id}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>תפקיד</td>
+            <td  #myHtml6>{{role}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3"><button (click)="change()">אישור שינויים</button></td>
+        </tr>
+    </table>
+    </div> -->

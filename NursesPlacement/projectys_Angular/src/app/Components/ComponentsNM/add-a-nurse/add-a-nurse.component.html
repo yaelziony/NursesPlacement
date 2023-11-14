@@ -1,0 +1,76 @@
+<!-- <div *ngIf="arr[0]">
+    <h1>פרטי אחות</h1>
+    <br/>
+    <input [(ngModel)]="nurse.N_id" placeholder="enter identity card" required ><label> : תעודת זהות</label>
+    <br/><br/><br/>
+    <input [(ngModel)]="nurse.N_password"type="password" placeholder="enter password"><label> : סיסמא</label>
+    <br/><br/><br/>
+    <input [(ngModel)]="nurse.N_firstName" placeholder="enter first name"><label> : שם פרטי</label>
+    <br/><br/><br/>
+    <input [(ngModel)]="nurse.N_lastName" placeholder="enter last name"><label> : שם משפחה</label>
+    <br/><br/><br/>
+    <input [(ngModel)]="nurse.N_tel" placeholder="enter phone"><label> : טלפון</label>
+    <br/><br/><br/>
+    <input [(ngModel)]="nurse.N_email" placeholder="enter email"><label> : מייל</label>
+    <br/><br/><br/>
+    <input [(ngModel)]="nurse.N_status" placeholder="enter role"><label> : תפקיד</label>
+    <br/><br/><br/><br/>
+    <input [(ngModel)]="nameDepartment" placeholder="enter name department"><label> : מחלקה</label>
+    <br/><br/><br/><br/>
+    <button (click)="check()">אישור</button>
+</div>
+<app-succeed-to-add *ngIf="arr[1]"></app-succeed-to-add> -->
+<body>
+    <div class="row">
+  <div class="col-md-12">
+    <form action="index.html" method="post" >
+      <h1>הוספת אחות</h1>     
+      <fieldset>        
+        <legend><span class="number">1</span>פרטים בסיסיים:</legend>
+      
+        <label for="name">שם פרטי:</label>
+        <input [(ngModel)]="nurse.N_firstName" type="text" id="name" name="user_name" >
+        
+        <label for="lastname">שם משפחה:</label>
+        <input [(ngModel)]="nurse.N_lastName" type="text" id="lastname" name="user_lastname">
+
+        <label for="id">תעודת זהות:</label>
+        <input [(ngModel)]="nurse.N_id" type="text" id="id"  name="user_id" required>
+        <p *ngIf="arr[0]">שדה חובה*</p>
+
+        <label for="password">סיסמה:</label>
+        <input [(ngModel)]="nurse.N_password" type="password" id="password"  name="user_password" required>
+        <p *ngIf="arr[1]">שדה חובה*</p>
+
+        <label for="email">מייל:</label>
+        <input [(ngModel)]="nurse.N_email" type="email" id="mail" name="user_email">
+    
+        <label for="phon">טלפון:</label>
+        <input [(ngModel)]="nurse.N_tel" type="text" id="phon" name="user_phon" required>
+        <p *ngIf="arr[2]">שדה חובה*</p>
+     
+      </fieldset>
+      <fieldset>  
+      
+        <legend><span class="number">2</span>תפקיד במחלקה</legend>
+        
+        <label>תפקיד:</label>
+        <input [(ngModel)]="nurse.N_status" type="radio" id="under_13" value="אחות" name="אחות" ><label for="אחות" class="light" >אחות</label><br>
+        <input [(ngModel)]="nurse.N_status" type="radio" id="over_13" value="אחראית מחלקה" name="אחראית מחלקה"><label for="אחראית מחלקה" class="light">מנהלת מחלקה</label>
+        <p *ngIf="arr[3]">שדה חובה*</p>
+        <br/><br/>
+
+       <label for="department">מחלקה:</label>
+        <select [(ngModel)]="nameDepartment" id="department" name="user_department" required>
+          <optgroup label=":מחלקה">
+            <option value="internal" >פנימית</option>
+            <option value="maternity" >יולדות</option>
+           </optgroup>
+        </select>
+       </fieldset>    
+      <button type="submit" (click)="check()">אישור</button>  
+     </form>
+      </div>
+    </div>    
+  </body>
+<router-outlet></router-outlet>   

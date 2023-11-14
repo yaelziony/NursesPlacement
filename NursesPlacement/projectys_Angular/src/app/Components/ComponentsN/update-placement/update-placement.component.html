@@ -1,0 +1,39 @@
+<table #myHtml class="tableClass">
+    <tr class="titleTableClass">
+        <td>שבת</td>
+        <td>שישי</td>
+        <td>חמישי</td>
+        <td>רביעי</td>
+        <td>שלישי</td>
+        <td>שני</td>
+        <td>ראשון</td>
+    </tr>
+    <tr class="trTableClass">
+        <td><button (click)=updatePlacementToTable(0,0) [ngStyle]="{'background-color':getColor(0,0)}" class="btn">בוקר</button></td>
+        <td><button (click)=updatePlacementToTable(0,1) [ngStyle]="{'background-color':getColor(0,1)}"  class="btn">בוקר</button></td>
+        <td><button (click)=updatePlacementToTable(0,2) [ngStyle]="{'background-color':getColor(0,2)}"  class="btn">בוקר</button></td>
+        <td><button (click)=updatePlacementToTable(0,3) [ngStyle]="{'background-color':getColor(0,3)}"  class="btn">בוקר</button></td>
+        <td><button (click)=updatePlacementToTable(0,4) [ngStyle]="{'background-color':getColor(0,4)}"  class="btn">בוקר</button></td>
+        <td><button (click)=updatePlacementToTable(0,5) [ngStyle]="{'background-color':getColor(0,5)}"  class="btn">בוקר</button></td>
+        <td><button (click)=updatePlacementToTable(0,6) [ngStyle]="{'background-color':getColor(0,6)}"  class="btn">בוקר</button></td>
+    </tr>
+    <tr class="trTableClass">
+      <td> <button  (click)=updatePlacementToTable(1,0) [ngStyle]="{'background-color':getColor(1,0)}" class="btn">ערב</button></td>
+      <td> <button  (click)=updatePlacementToTable(1,1) [ngStyle]="{'background-color':getColor(1,1)}" class="btn">ערב</button></td>
+      <td> <button  (click)=updatePlacementToTable(1,2) [ngStyle]="{'background-color':getColor(1,2)}" class="btn">ערב</button></td>
+      <td> <button  (click)=updatePlacementToTable(1,3) [ngStyle]="{'background-color':getColor(1,3)}" class="btn">ערב</button></td>
+      <td> <button  (click)=updatePlacementToTable(1,4) [ngStyle]="{'background-color':getColor(1,4)}" class="btn">ערב</button></td>
+      <td> <button  (click)=updatePlacementToTable(1,5) [ngStyle]="{'background-color':getColor(1,5)}" class="btn">ערב</button></td>
+      <td> <button  (click)=updatePlacementToTable(1,6) [ngStyle]="{'background-color':getColor(1,6)}" class="btn">ערב</button></td>
+    </tr>
+    <tr class="trTableClass">
+       <td><button (click)=updatePlacementToTable(2,0) [ngStyle]="{'background-color':getColor(2,0)}" class="btn">לילה</button></td>
+       <td><button (click)=updatePlacementToTable(2,1) [ngStyle]="{'background-color':getColor(2,1)}" class="btn">לילה</button></td>
+       <td><button (click)=updatePlacementToTable(2,2) [ngStyle]="{'background-color':getColor(2,2)}" class="btn">לילה</button></td>
+       <td><button (click)=updatePlacementToTable(2,3) [ngStyle]="{'background-color':getColor(2,3)}" class="btn">לילה</button></td>
+       <td><button (click)=updatePlacementToTable(2,4) [ngStyle]="{'background-color':getColor(2,4)}" class="btn">לילה</button></td>
+       <td><button (click)=updatePlacementToTable(2,5) [ngStyle]="{'background-color':getColor(2,5)}" class="btn">לילה</button></td>
+       <td><button (click)=updatePlacementToTable(2,6) [ngStyle]="{'background-color':getColor(2,6)}" class="btn">לילה</button></td>
+    </tr>
+</table>
+

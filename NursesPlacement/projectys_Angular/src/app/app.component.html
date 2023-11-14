@@ -1,0 +1,16 @@
+
+<div class="baseClass" *ngIf="flag1">
+    <div class="loginClass">
+      <br/>
+      <label>:הכנס תעודת זהות</label><br/><br/>
+      <input [(ngModel)]="id_nurse" placeholder="enter your identity card"><br/><br/>
+      <label>:הכנס סיסמא</label><br/><br/>
+      <input [(ngModel)]="password" placeholder="enter your password" type="password"><br/>
+      <br/><br/>
+      <button (click)="check()">התחברות</button>
+  </div>
+</div>
+<!-- <app-logo></app-logo> -->
+<!-- <app-form-field-prefix-suffix-example></app-form-field-prefix-suffix-example> -->
+<router-outlet></router-outlet>
+

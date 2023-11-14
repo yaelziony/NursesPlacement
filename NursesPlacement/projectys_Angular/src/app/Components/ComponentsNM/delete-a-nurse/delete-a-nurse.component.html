@@ -1,0 +1,19 @@
+<promo>
+    <promo-title class="">
+      <!-- <promo-code-title>Promo code</promo-code-title> -->
+      <remove-promo id="remove-promo" class="hide">מחיקת אחות קיימת</remove-promo>
+    </promo-title>
+    <list-content>
+      <sub-text>הכניסי תעודת זהות </sub-text>
+      <br><br>
+      <div class="form-group">
+        <input [(ngModel)]="id_nurse"  type="text" id="promo" class="form-control" required>
+        <label class="form-control-placeholder" for="promo">enter identity card </label>
+        <p *ngIf="textNurseExist" class="p1">הפעולה עברה בהצלחה</p>
+        <p *ngIf="textNurseNoExist" class="p2">האחות אינה קיימת במערכת</p>
+      </div>
+      <div id="apply-promo" class="buttonContainer hide">
+      </div>
+      <button (click)="check()" class="ok">מחיקה</button>
+    </list-content>
+</promo>

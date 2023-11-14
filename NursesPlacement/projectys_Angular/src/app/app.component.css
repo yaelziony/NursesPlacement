@@ -1,0 +1,94 @@
+body,div{
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+input{
+    font-size: 30px;
+}
+button{
+    border: rgb(236, 202, 6) solid 3px;
+    background-color: rgba(236, 234, 214, 0.8);
+    border-radius: 8px;
+    font-family:'Gisha'; 
+    font-size: 32px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;    
+}
+button:hover{
+    /* border:solid rgb(231, 209, 80) 6px; */
+    border-radius: 12px;
+    /* background-color: rgba(238, 221, 67, 0.2); */
+    color: rgb(43, 42, 40);  
+    box-shadow: rgba(87, 93, 50, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    
+}
+div{
+    text-align: center;
+}
+.loginClass{
+    text-align: center;
+    background-color:hsla(77, 14%, 80%, 0.411);
+    opacity: 0%;
+    border-radius: 15px; 
+    width: 620px;
+    height: 470px;
+}
+.baseClass{
+    background-image: url("../assets/image/baseTotale.gif");
+    background-attachment: fixed;
+    background-position: center;
+    max-width: 100%;
+    height: 736px;
+    /* שנה את גודל תמונת הרקע כדי לכסות את כל המיכל */
+    background-size: cover; 
+    display: block;
+}
+
+@keyframes show {
+    0%  {background-color:rgba(207, 211, 197, 0.411); left:450px; top:-20px;}
+    100%  {border-radius: 18px; left:450px; top:142px;
+           opacity: 100%;
+    }
+}
+
+.loginClass {
+    animation-name: show;
+    /* במשך כמה זמן */
+    animation-duration: 2s;
+    position: absolute;
+  /* לאחר כמה זמן יתחיל */
+    animation-delay: 0.2s;
+    /* שישאר עד הסוף */
+    animation-fill-mode: forwards;
+}
+.loginClass:hover{
+    border:solid 3px rgba(209, 202, 101, 0.308);
+}
+input{
+    width: 350px;
+}
+input:hover{
+    /* box-shadow: rgba(238, 241, 21, 0.3) 0px 0px 0px 4px; */
+    border-radius: 5px;
+}
+button :hover{
+transform: translateY(1px);
+box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
+          0 1px 1px 0 rgba(0,0,0,0.09);
+        }
+
+
+
+
+
+
+
+
+/* .loginClass:hover{
+    border-radius: 18px; 
+    width: 650px;
+    height: 500px;
+} */

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Nurses_PlacementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="D_id" />
+    </Key>
+    <Property Name="D_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="D_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="D_countNursesInShift" Type="Int32" />
+    <Property Name="D_countNursesInDep" Type="Int32" />
+    <NavigationProperty Name="NursesInDepartments" Relationship="Self.FK__NursesInD__ND_D___17F790F9" FromRole="Department" ToRole="NursesInDepartment" />
+  </EntityType>
+  <EntityType Name="Nurse">
+    <Key>
+      <PropertyRef Name="N_id" />
+    </Key>
+    <Property Name="N_id" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="N_password" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="N_firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="N_lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="N_tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="N_email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="N_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NursesInDepartments" Relationship="Self.FK__NursesInD__ND_N___18EBB532" FromRole="Nurse" ToRole="NursesInDepartment" />
+  </EntityType>
+  <EntityType Name="NursesInDepartment">
+    <Key>
+      <PropertyRef Name="ND_id_NinD" />
+    </Key>
+    <Property Name="ND_id_NinD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ND_D_id" Type="Int32" />
+    <Property Name="ND_N_id" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Department" Relationship="Self.FK__NursesInD__ND_D___17F790F9" FromRole="NursesInDepartment" ToRole="Department" />
+    <NavigationProperty Name="Nurse" Relationship="Self.FK__NursesInD__ND_N___18EBB532" FromRole="NursesInDepartment" ToRole="Nurse" />
+    <NavigationProperty Name="Placements" Relationship="Self.FK__Placement__P_idN__1BC821DD" FromRole="NursesInDepartment" ToRole="Placement" />
+  </EntityType>
+  <EntityType Name="Placement">
+    <Key>
+      <PropertyRef Name="P_id" />
+    </Key>
+    <Property Name="P_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="P_idNInD" Type="Int32" />
+    <Property Name="P_day" Type="Int32" />
+    <Property Name="P_shift" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="NursesInDepartment" Relationship="Self.FK__Placement__P_idN__1BC821DD" FromRole="Placement" ToRole="NursesInDepartment" />
+  </EntityType>
+  <Association Name="FK__NursesInD__ND_D___17F790F9">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="NursesInDepartment" Type="Self.NursesInDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="D_id" />
+      </Principal>
+      <Dependent Role="NursesInDepartment">
+        <PropertyRef Name="ND_D_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NursesInD__ND_N___18EBB532">
+    <End Role="Nurse" Type="Self.Nurse" Multiplicity="0..1" />
+    <End Role="NursesInDepartment" Type="Self.NursesInDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nurse">
+        <PropertyRef Name="N_id" />
+      </Principal>
+      <Dependent Role="NursesInDepartment">
+        <PropertyRef Name="ND_N_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Placement__P_idN__1BC821DD">
+    <End Role="NursesInDepartment" Type="Self.NursesInDepartment" Multiplicity="0..1" />
+    <End Role="Placement" Type="Self.Placement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NursesInDepartment">
+        <PropertyRef Name="ND_id_NinD" />
+      </Principal>
+      <Dependent Role="Placement">
+        <PropertyRef Name="P_idNInD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Nurses_PlacementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Nurses" EntityType="Self.Nurse" />
+    <EntitySet Name="NursesInDepartments" EntityType="Self.NursesInDepartment" />
+    <EntitySet Name="Placements" EntityType="Self.Placement" />
+    <AssociationSet Name="FK__NursesInD__ND_D___17F790F9" Association="Self.FK__NursesInD__ND_D___17F790F9">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="NursesInDepartment" EntitySet="NursesInDepartments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NursesInD__ND_N___18EBB532" Association="Self.FK__NursesInD__ND_N___18EBB532">
+      <End Role="Nurse" EntitySet="Nurses" />
+      <End Role="NursesInDepartment" EntitySet="NursesInDepartments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Placement__P_idN__1BC821DD" Association="Self.FK__Placement__P_idN__1BC821DD">
+      <End Role="NursesInDepartment" EntitySet="NursesInDepartments" />
+      <End Role="Placement" EntitySet="Placements" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,35 @@
+<div dir="rtl" class="headDiv">
+
+    <div class="home">
+        <button class="buttonClass" (click)="chageIndx(1)">בית</button>
+        <button class="buttonClass" (click)="chageIndx(2)">פרטים אישיים</button>
+        <button class="buttonClass" (click)="chageIndx(0)">אנשי קשר</button>
+        <button class="buttonClass" (click)="chageIndx(3)">משמרות</button>
+        <button class="buttonClass" (click)="chageIndx(4)">עדכון משמרות</button>
+        <label class="logo">
+            <label class="l1">אחיות</label>
+            <label class="l2">NURSES</label>
+        </label>
+    </div>
+    <div *ngIf="isProfile" class="profile">
+        <div class="profile-picture">
+            <img src="../../../assets/image/תמונה3.png" alt="Nurse Picture">
+        </div>
+        <div class="profile-details">
+            <h3>אחות מחלקה {{nameDepartment}}</h3>
+            <h2>{{nurseObj.N_firstName}} {{nurseObj.N_lastName}}</h2>
+            <h2></h2>
+        </div>
+    </div>
+
+    <!-- <div class="personalI">
+        <p> אחות מחלקה :{{nameDepartment}} </p>
+        <p>{{nurseObj.N_firstName}} {{nurseObj.N_lastName}}</p>
+    </div> -->
+    <app-contacts *ngIf="arr[0]"></app-contacts>
+    <app-home *ngIf="arr[1]"></app-home>
+    <app-personal-information *ngIf="arr[2]"></app-personal-information>
+    <app-show-placement *ngIf="arr[3]"></app-show-placement>
+    <app-update-placement *ngIf="arr[4]"></app-update-placement>
+</div>
+<router-outlet></router-outlet>
