@@ -60,7 +60,7 @@ Now `pre-commit` will run automatically on git commit!
 
 There is an option to manually run all the pre-commit hooks in the repository, by: `pre-commit run --all-files.` To run individual hooks: in `pre-commit run <hook_id>`.
 
-![Alt text](C:\Users\yzioni\Pictures\Screenshots\img1.png raw=true "Optional Title")
+![Alt text](C:/Users/yzioni/Pictures/Screenshots/img1.png?raw=true "Optional Title")
 
 ### Docker
 
